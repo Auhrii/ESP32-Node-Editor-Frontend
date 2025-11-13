@@ -1,0 +1,22 @@
+{
+	"InputOutput": {
+		"colour": "#D8FFD8",
+		"text-colour": "#282828"
+	},
+	"Boolean Logic": {
+		"colour": "#FFD8D8",
+		"text-colour": "#282828"
+	},
+	"Arithmetic": {
+		"colour": "#D8D8FF",
+		"text-colour": "#282828"
+	},
+	"Timers": {
+		"colour": "#FFD8FF",
+		"text-colour": "#282828"
+	},
+	"Control": {
+		"colour": "#D8FFFF",
+		"text-colour": "#282828"
+	}
+}

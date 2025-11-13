@@ -1,0 +1,108 @@
+#nav-pane {
+	width: 205px; height: 100vh;
+	left: 0px; top: 0px;
+	padding-top: 5px;
+	position: fixed;
+	background-color: var(--bg-dark-50);
+	backdrop-filter: blur(10px);
+	z-index: 100;
+
+	& button:not(.round-button, .global-button) {
+		font-family: sarpanch;
+		min-width: 95px;
+		margin-left: 5px; margin-bottom: 5px;
+		text-align: left;
+		padding-left: 17px;
+	
+		& img {
+			display: block;
+			position: fixed;
+			top: 0px; left: 0px;
+			filter: invert(100%) opacity(10%);
+		}
+		&:not(.danger):hover img { filter: invert(13%) contrast(93%) opacity(25%); }
+		&.small-button {
+			min-width: 45px; width: 45px;
+			color: #00000000;
+			overflow-x: hidden;
+
+			& img {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+	}
+
+	& #categories {
+		width: 100%; height: calc(100% - 100px);
+		left: 0px; top: 95px;
+		position: absolute;
+		overflow-x: hidden; overflow-y: scroll;
+		scrollbar-width: none;
+
+		& .category {
+			width: calc(100% - 10px); height: auto;
+			left: 5px;
+			margin-bottom: 5px;
+			padding-bottom: 1px;
+			position: relative;
+			border-radius: 5px;
+			overflow: hidden;
+
+			& h3 {
+				font-family: sarpanch;
+				font-weight: normal;
+				font-size: 18px;
+				width: 100%; height: 30px;
+				margin: 0px; padding-left: 10px;
+				line-height: 30px;
+			}
+			& .list-node {
+				transition: filter 0.25s ease;
+				width: calc(100% - 5px);
+				left: 5px;
+				margin-top: 1px;
+				position: relative;
+				filter: opacity(75%);
+
+				& h2 { padding-right: 30px; }
+				& .add-node {
+					width: 30px; height: 30px; min-width: auto;
+					right: 0px; top: 0px;
+					position: absolute;
+					border-radius: 0px;
+					display: none;
+
+					&:active {
+						background-color: var(--friendly);
+						display: block;
+					}
+				}
+				&:hover .add-node {
+					display: block;
+					cursor: grab;
+
+					&:active { cursor: grabbing; }
+				}
+				&:hover, &:has(.add-node:active) {
+					transition: none;
+					filter: opacity(100%);
+				}
+			}
+		}
+	}
+}
+
+#nav-show-hide {
+	display: none;
+	left: calc(100% + 10px); top: 10px;
+	position: absolute;
+}
+
+@media (max-width: 1000px) {
+	#nav-pane {
+		transition: margin-left 0.25s ease;
+		left: -205px;
+	}
+	#nav-show-hide { display: block; }
+}

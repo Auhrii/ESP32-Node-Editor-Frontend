@@ -1,0 +1,177 @@
+{
+  "chain": [
+    {
+      "id": 0,
+      "type": "Analog Input",
+      "coordinates": {
+        "x": 0,
+        "y": 4
+      },
+      "wires": [
+        {
+          "to": 8,
+          "input": 1
+        }
+      ],
+      "config": {
+        "Pin": 32
+      }
+    },
+    {
+      "id": 1,
+      "type": "Fixed Summation",
+      "coordinates": {
+        "x": 14,
+        "y": 4
+      },
+      "wires": [
+        {
+          "to": 2,
+          "input": 1
+        }
+      ],
+      "config": {
+        "Operation": "X",
+        "Operand": 1000000
+      }
+    },
+    {
+      "id": 2,
+      "type": "Clock",
+      "coordinates": {
+        "x": 21,
+        "y": 4
+      },
+      "wires": [
+        {
+          "to": 7,
+          "input": 1
+        }
+      ],
+      "config": {
+        "Interval": 10,
+        "Timescale": "Second"
+      }
+    },
+    {
+      "id": 3,
+      "type": "Digital Input",
+      "coordinates": {
+        "x": 14,
+        "y": 10
+      },
+      "wires": [
+        {
+          "to": 5,
+          "input": 1
+        }
+      ],
+      "config": {
+        "Pin": 22
+      }
+    },
+    {
+      "id": 4,
+      "type": "Digital Input",
+      "coordinates": {
+        "x": 14,
+        "y": 14
+      },
+      "wires": [
+        {
+          "to": 5,
+          "input": 2
+        }
+      ],
+      "config": {
+        "Pin": 23
+      }
+    },
+    {
+      "id": 5,
+      "type": "XOR Gate",
+      "coordinates": {
+        "x": 21,
+        "y": 11
+      },
+      "wires": [
+        {
+          "to": 7,
+          "input": 2
+        }
+      ],
+      "config": {
+        
+      }
+    },
+    {
+      "id": 6,
+      "type": "Digital Output",
+      "coordinates": {
+        "x": 35,
+        "y": 7
+      },
+      "wires": [
+        
+      ],
+      "config": {
+        "Pin": 21
+      }
+    },
+    {
+      "id": 7,
+      "type": "XOR Gate",
+      "coordinates": {
+        "x": 28,
+        "y": 7
+      },
+      "wires": [
+        {
+          "to": 6,
+          "input": 1
+        }
+      ],
+      "config": {
+        
+      }
+    },
+    {
+      "id": 8,
+      "type": "Range Map",
+      "coordinates": {
+        "x": 7,
+        "y": 4
+      },
+      "wires": [
+        {
+          "to": 1,
+          "input": 1
+        }
+      ],
+      "config": {
+        "Ranges": [
+          {
+            "from": 0,
+            "to": 1000,
+            "out": 2
+          },
+          {
+            "from": 1001,
+            "to": 2000,
+            "out": 4
+          },
+          {
+            "from": 2001,
+            "to": 3000,
+            "out": 6
+          },
+          {
+            "from": 3001,
+            "to": 4000,
+            "out": 8
+          }
+        ]
+      }
+    }
+  ]
+}

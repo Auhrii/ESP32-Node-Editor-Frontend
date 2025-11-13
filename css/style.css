@@ -1,0 +1,313 @@
+* {
+	/* Yes, CSS has variables! Using these to make it easier to edit them with scripts. */
+	--text: #FFFFFF;
+	--text-10: #FFFFFF1A;
+
+	--bg-dark: #282828;
+	--bg-darkmid: #323232;
+	--bg-mid: #404040;
+	--bg-lightmid: #646464;
+	--bg-light: #AAAAAA;
+
+	--bg-dark-50: #28282880;
+	--bg-darkmid-50: #32323280;
+	--bg-darkmid-75: #323232BF;
+	--bg-darkmid-90: #323232E6;
+	--bg-mid-50: #40404080;
+	--bg-mid-90: #404040E6;
+	--bg-lightmid-50: #64646480;
+
+	--highlight: #FFD800;
+	--highlight-subtle: #FFD80080;
+
+	--danger: #C4281C;
+	--danger-subtle: #C4281C80;
+
+	--friendly: #4B974B;
+	--friendly-subtle: #4B974BBF;
+
+	--grid-size: 40px;
+	--grid-colour: #FFFFFF0D;
+
+	--bool: #FF8080;
+	--int: #80FF80;
+	--float: #8080FF;
+}
+
+body {
+	width: 100vw; height: 100vh;
+	background-color: var(--bg-dark);
+	color: var(--text);
+	overflow: hidden;
+	user-select: none;
+}
+
+h1, h2, h3 {
+	font-family: sarpanch;
+	font-weight: normal;
+	margin: 0px;
+	padding-left: 10px;
+}
+h1 {
+	font-size: 18px;
+	line-height: var(--grid-size);
+}
+h2 {
+	font-size: 16px;
+	line-height: calc(var(--grid-size) * 0.75);
+}
+h3 {
+	font-size: 14px;
+	line-height: calc(var(--grid-size) * 0.5);
+}
+
+#canvas {
+	position: absolute;
+	left: 0px; top: 0px;
+	width: 100vw; height: 100vh;
+	cursor: grab;
+
+	& #root {
+		width: 0px; height: 0px;
+
+		& #canvas-background {
+			position: absolute;
+			width: 300vw; height: 300vh;
+			left: 0px; top: 0px;
+			/* Kudos to shunryu111 for the procedural grid texture: https://stackoverflow.com/a/32861765 */
+			background-size: var(--grid-size) var(--grid-size);
+			background-image: linear-gradient(to right, var(--grid-colour) 2px, #00000000 1px),
+				linear-gradient(to bottom, var(--grid-colour) 2px, #00000000 1px);
+			background-position: -1px -1px;
+		}
+	}
+}
+
+button {
+	transition: background-color 0.25s ease, filter 0.25s ease, color 0.25s ease;
+	background-color: var(--bg-mid-50);
+	height: 40px;
+	filter: drop-shadow(1px 1px 2px var(--bg-mid));
+	color: var(--text);
+	border: none;
+	cursor: pointer;
+	border-radius: 3px;
+	padding: 0;
+	pointer-events: all;
+
+	&:hover {
+		transition: none;
+		background-color: var(--highlight-subtle);
+		filter: drop-shadow(1px 1px 2px var(--highlight));
+		color: var(--bg-dark);
+
+		& img {
+			transition: none;
+			filter: invert(13%) contrast(93%) drop-shadow(1px 1px 2px var(--bg-dark));
+			pointer-events: none;
+			-webkit-user-drag: none;
+		}
+		&.danger {
+			background-color: var(--danger-subtle);
+			filter: drop-shadow(1px 1px 2px var(--danger));
+			color: var(--text);
+
+			& img { filter: invert(100%); }
+		}
+		&.friendly {
+			background-color: var(--friendly-subtle);
+			filter: drop-shadow(1px 1px 2px var(--friendly));
+			color: var(--text);
+
+			& img { filter: invert(100%); }
+		}
+	}
+	& img {
+		transition: filter 0.25s ease;
+		height: calc(100% - 10px);
+		aspect-ratio: 1;
+		padding: 5px;
+		filter: invert(100%);
+	}
+}
+.round-button {
+	min-width: 40px;
+	border-radius: 20px;
+}
+
+input, select {
+	transition: background-color 0.25s ease;
+	background-color: var(--bg-mid);
+	color: var(--text);
+	font-size: 16px;
+	font-family: hyperlegible;
+	padding: 0px; padding-left: 5px; padding-right: 5px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	pointer-events: all;
+
+	&[type="number"] {
+		font-family: inconsolata;
+		padding-left: 10px; padding-right: 10px;
+	}
+	&:hover, &:focus {
+		transition: none;
+		background-color: var(--bg-lightmid);
+	}
+}
+select { cursor: pointer; }
+
+#status-bar {
+	position: fixed;
+	right: -3px; bottom: -3px;
+	background-color: var(--bg-darkmid-75);
+	color: var(--bg-light);
+	font-size: 16px;
+	font-family: sarpanch;
+	text-align: right;
+	padding: 0px; padding-left: 5px; padding-right: 8px; padding-bottom: 3px;
+	z-index: 100;
+	backdrop-filter: blur(3px);
+	border-radius: 3px;
+
+	table {
+		width: 100%;
+
+		tr {
+			td {
+				text-align: center;
+				padding-right: 10px;
+			}
+		}
+	}
+}
+
+#tooltip {
+	position: absolute;
+	background-color: var(--bg-darkmid-75);
+	color: var(--text);
+	font-size: 16px;
+	font-family: inconsolata;
+	display: none;
+	padding: 5px;
+	border-radius: 5px;
+	z-index: 100;
+	backdrop-filter: blur(3px);
+	pointer-events: none;
+}
+
+#modal {
+	transition: filter 0.25s ease, backdrop-filter 0.25s ease;
+	left: 0px; top: 0px;
+	width: 100vw; height: 100vh;
+	background-color: var(--bg-dark-50);
+	position: fixed;
+	z-index: 1000;
+	pointer-events: none;
+	filter: opacity(0%);
+	backdrop-filter: none;
+
+	&.visible {
+		filter: none;
+		backdrop-filter: blur(9px);
+		pointer-events: all;
+	}
+	& .centre-box {
+		font-family: hyperlegible;
+		left: 50vw; top: 50vh;
+		transform: translate(-50%, -50%);
+		position: absolute;
+		text-align: center;
+
+		& button:not(.round-button) {
+			font-family: sarpanch;
+			min-width: 95px;
+			margin-left: 5px; margin-bottom: 5px;
+			text-align: left;
+			padding-left: 17px;
+		
+			& img {
+				display: block;
+				position: fixed;
+				top: 0px; left: 0px;
+				filter: invert(100%) opacity(10%);
+			}
+			&:not(.danger):hover img { filter: invert(13%) contrast(93%) opacity(25%); }
+		}
+		& .header-image {
+			position: absolute;
+			left: 50%; top: 20px;
+			width: 64px; aspect-ratio: 1;
+			transform: translate(-50%, -50%);
+			z-index: -1;
+			filter: invert(100%) opacity(10%);
+		}
+		& form {
+			width: 300px; min-height: var(--grid-size); max-height: calc(75vh - 100px);
+			overflow-y: scroll;
+			scrollbar-width: none;
+
+			& .config-section {
+				min-height: var(--grid-size);
+				background-color: var(--bg-darkmid-50);
+				margin-left: 5px; margin-right: 5px; margin-top: 5px;
+				padding-left: 5px; padding-right: 5px;
+				border-radius: 5px;
+				position: relative;
+
+				& h2 {
+					text-align: left;
+					padding-left: 5px;
+				}
+				& input {
+					height: calc(var(--grid-size) * 0.75);
+					margin-bottom: 5px;
+					padding-left: 10px; padding-right: 10px;
+					border-radius: 3px;
+					
+					&[type=text], &[type=password] { width: 280px; }
+				}
+				& .tile-button {
+					width: 280px; min-height: 50px;
+					margin-left: 0px;
+					padding-left: 10px;
+				}
+				&:has(.corner-button) h2 { height: calc(var(--grid-size) * 0.75 + 10px); }
+			}
+		}
+	}
+}
+
+span.misc-info {
+	transition: color 0.25s ease;
+	font-family: inconsolata;
+	color: var(--bg-light);
+	display: block;
+}
+
+button:hover span.misc-info {
+	transition: none;
+	color: var(--bg-dark);
+}
+
+.corner-button {
+	position: absolute;
+	right: 5px; top: 5px;
+	height: calc(var(--grid-size) * 0.75); width: 64px; min-width: auto;
+
+	font-family: sarpanch;
+	margin-left: 5px; margin-bottom: 5px;
+	text-align: left;
+	padding-left: 17px;
+
+	& img {
+		display: block;
+		position: fixed;
+		top: 0px; left: 0px;
+		filter: invert(100%) opacity(10%);
+	}
+
+	&:hover img { filter: invert(13%) contrast(93%) opacity(25%); }
+}

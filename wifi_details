@@ -1,0 +1,10 @@
+{
+	"AP": {
+		"SSID": "ESPSSID",
+		"IP": "A.B.C.D"
+	},
+	"Client": {
+		"SSID": "ClientWiFi",
+		"IP": "E.F.G.H"
+	}
+}

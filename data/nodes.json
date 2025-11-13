@@ -1,0 +1,383 @@
+{
+	"AND Gate": {
+		"category": "Boolean Logic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		}
+	},
+	"OR Gate": {
+		"category": "Boolean Logic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		}
+	},
+	"NOT Gate": {
+		"category": "Boolean Logic",
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		}
+	},
+	"XOR Gate": {
+		"category": "Boolean Logic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		}
+	},
+	"PID Controller": {
+		"category": "Control",
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Proportional": {
+				"type": "float"
+			},
+			"Integral": {
+				"type": "float"
+			},
+			"Derivative": {
+				"type": "float"
+			},
+			"Target": {
+				"type": "float"
+			}
+		}
+	},
+	"Clock": {
+		"category": "Timers",
+		"sockets": {
+			"Interval (Optional)": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		},
+		"config": {
+			"Interval": {
+				"type": "float"
+			},
+			"Timescale": {
+				"type": "enum",
+				"values": ["Micro", "Milli", "Second"]
+			}
+		}
+	},
+	"Watchdog": {
+		"category": "Timers",
+		"config": {
+			"Mode": {
+				"type": "enum",
+				"values": ["Min-Value", "Max-Value", "Timeout"]
+			},
+			"Threshold": {
+				"type": "float"
+			}
+		},
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Reset": {
+				"direction": "in",
+				"type": "bool"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "bool"
+			}
+		}
+	},
+	"Echo Repeater": {
+		"category": "Timers",
+		"sockets": {
+			"Counter Start": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		}
+	},
+	"Analog Input": {
+		"category": "InputOutput",
+		"sockets": {
+			"Analog In": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Pin": {
+				"type": "int",
+				"min": 32,
+				"max": 39
+			}
+		}
+	},
+	"Analog Output": {
+		"category": "InputOutput",
+		"sockets": {
+			"Analog Out": {
+				"direction": "in",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Pin": {
+				"type": "int",
+				"min": 25,
+				"max": 26
+			}
+		}
+	},
+	"Digital Input": {
+		"category": "InputOutput",
+		"sockets": {
+			"Digital In": {
+				"direction": "out",
+				"type": "bool"
+			}
+		},
+		"config": {
+			"Pin": {
+				"type": "int",
+				"min": 1,
+				"max": 39
+			}
+		}
+	},
+	"Digital Output": {
+		"category": "InputOutput",
+		"sockets": {
+			"Digital Out": {
+				"direction": "in",
+				"type": "bool"
+			}
+		},
+		"config": {
+			"Pin": {
+				"type": "int",
+				"min": 1,
+				"max": 33
+			}
+		}
+	},
+	"Summation": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Operation": {
+				"type": "enum",
+				"values": ["+", "-", "X", "/"],
+				"display": ["Add", "Subtract", "Multiply", "Divide"]
+			}
+		}
+	},
+	"Fixed Summation": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Operation": {
+				"type": "enum",
+				"values": ["+", "-", "X", "/"],
+				"display": ["Add", "Subtract", "Multiply", "Divide"]
+			},
+			"Operand": {
+				"type": "float"
+			}
+		}
+	},
+	"Interpolation": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"A": {
+				"type": "float"
+			},
+			"B": {
+				"type": "float"
+			}
+		}
+	},
+	"Min": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		}
+	},
+	"Max": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		}
+	},
+	"Scale": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input 1": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Input 2": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"In Low": {
+				"type": "float"
+			},
+			"In High": {
+				"type": "float"
+			},
+			"Out Low": {
+				"type": "float"
+			},
+			"Out High": {
+				"type": "float"
+			}
+		}
+	},
+	"Map": {
+		"category": "Arithmetic",
+		"hidden": true,
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		}
+	},
+	"Range Map": {
+		"category": "Arithmetic",
+		"sockets": {
+			"Input": {
+				"direction": "in",
+				"type": "float"
+			},
+			"Output": {
+				"direction": "out",
+				"type": "float"
+			}
+		},
+		"config": {
+			"Ranges": {
+				"type": "rangemap"
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+[
+	{
+		"SSID": "Test AP Please Ignore",
+		"SECURE": "Secure",
+		"RSSI": "-28dBm"
+	},
+	{
+		"SSID": "Oh Noes",
+		"SECURE": "",
+		"RSSI": "-74dBm"
+	}
+]

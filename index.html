@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>ESP32 Node Editor</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="css/nodes.css" />
+
+		<script src="scripts/utils.js"></script>
+		<script src="scripts/nav.js" defer></script>
+		<script src="scripts/editor.js" defer></script>
+		<script src="scripts/status-bar.js" defer></script>
+	</head>
+	<body>
+		<div id="modal"><div class="centre-box"></div></div>
+		<div id="nav-pane">
+			<button class="round-button" id="nav-show-hide"><img /></button>
+			<button id="new"><img src="images/icons/file.svg"/>NEW</button><button id="centre-view" class="small-button"><img src="images/icons/maximise.svg"/>CENTRE</button><button id="config" class="small-button"><img src="images/icons/settings.svg"/>CONFIG</button>
+			<button id="save"><img src="images/icons/save.svg"/>SAVE</button><button id="load"><img src="images/icons/folder.svg"/>LOAD</button>
+			<div id="categories"></div>
+		</div>
+		<div id="canvas">
+			<div id="root"><div id="canvas-background"></div></div>
+		</div>
+		<div id="status-bar">
+			<table>
+				<tr>
+					<td>WiFi AP SSID: <span id="apssid">Loading...</span></td>
+					<td>WiFi AP IP: <span id="apip">Loading...</span></td>
+					<td>
+						WiFi Client SSID:
+						<span id="clientssid">Loading...</span>
+					</td>
+					<td>
+						WiFi Client IP: <span id="clientip">Loading...</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="tooltip"></div>
+	</body>
+</html>

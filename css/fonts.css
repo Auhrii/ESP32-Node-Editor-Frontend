@@ -1,0 +1,21 @@
+@font-face {
+	font-family: hyperlegible;
+	src: url(../fonts/Hyperlegible.ttf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: sarpanch;
+	src: url(../fonts/Sarpanch.ttf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: inconsolata;
+	src: url(../fonts/Inconsolata.ttf);
+	font-display: swap;
+}
+
+.hyperlegible { font-family: hyperlegible; }
+.sarpanch { font-family: sarpanch; }
+.inconsolata { font-family: inconsolata; }
