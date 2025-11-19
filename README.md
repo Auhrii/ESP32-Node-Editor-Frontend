@@ -9,3 +9,6 @@ This frontend is intended to be loaded onto the ESP32, acting as an access point
 In hindsight, many optimisations could have been made; first and foremost, converting the fonts to .woff2 to save on storage space. Many planned features were also cut short by time constraints, including zoom support (using CSS scale) in the editor.
 
 If you plan on testing this locally (from a local drive) on any Chromium browser, you may need to run test-server.bat and access it at http://localhost:1337, [else it won't load the scripts](https://www.reddit.com/r/learnjavascript/comments/nv1qq9/how_do_i_load_a_local_js_file_on_a_local_web_page/).
+
+An example of what you can expect from this interface:
+<img width="2155" height="970" alt="image_17" src="https://github.com/user-attachments/assets/b39091aa-c5bd-4d6f-8b65-f167d108d8e8" />
